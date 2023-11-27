@@ -15,8 +15,8 @@ def main(head_num: int = 16,
          max_seq_len: int = 512,
          tensor_para_size: int = 1,
          max_batch_size: int = 256):
-    for bsz in (64, 128, 256):
-        for seq_len in range(100, max_seq_len + 1):
+    for bsz in range(1, max_batch_size + 1):
+        for seq_len in range(1, max_seq_len + 1):
             subprocess.call(
                 f'{get_bert_gemm()} {bsz} {seq_len} {head_num} {size_per_head} 1 0 1 1',
                 shell=True)
